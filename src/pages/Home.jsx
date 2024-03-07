@@ -1,22 +1,29 @@
-import React, {useEffect} from "react";
-import './Home.css'
+import React, { useEffect } from "react";
+import "./Home.css";
 import Carousel from "../components/Carousel";
-
+import Herotext from "../components/Herotext";
+import Futurecard from "../components/Futurecard";
+import Timeline from "../components/Timeline";
+import Avatarslide from "../components/Avatarslide";
 
 function Home() {
-
+  // MouseFollower.registerGSAP(gsap);
+  
   useEffect(() => {
-
     //movcont
-    var update = function(event) {
+  //   const cursor = new MouseFollower({
+  //     container: '.blob',
+  //     speed: 0.3
+  // });
+    var update = function (event) {
       mouse.updatePosition(event);
       updateTransformStyle(
-        (mouse.y / inner.offsetHeight/2).toFixed(2),
-        (mouse.x / inner.offsetWidth/2).toFixed(2)
+        (mouse.y / inner.offsetHeight / 2).toFixed(2),
+        (mouse.x / inner.offsetWidth / 2).toFixed(2)
       );
     };
-    
-    var updateTransformStyle = function(x, y) {
+
+    var updateTransformStyle = function (x, y) {
       var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
@@ -75,24 +82,14 @@ function Home() {
     container.onmousemove = onMouseMoveHandler;
 
     //blob
-    const blob = document.getElementById("blob");
+    // const blob = document.getElementById("blob");
   });
-  window.onpointermove = (event) => {
-    const { clientX, clientY } = event;
-    blob.animate(
-      {
-        left: `${clientX}px`,
-        top: `${clientY}px`,
-      },
-      { duration: 3000, fill: "forwards" }
-    );
-  };
 
-  
+
   return (
-    <div className="w-full">
-      <div id="blob" className=" blur-[100px]"></div>
+    <div className="flex-row">
       {/* <div id="blur"></div> */}
+      <div id="blob" className=" blur-[100px] "></div>
       <div id="container" className="w-full flex items-center justify-center ">
         <div className="z-50 absolute text-[90px] tracking-tighter leading-[0.85em] justify-center align-middle ">
           <p className=" text-white font-bold font-oswald  text-start pr-[180px]">
@@ -107,9 +104,13 @@ function Home() {
           <p className=" text-white font-bold font-oswald  text-end ">
             horizons
           </p>
-          <div className=" leading-8 flex my-8 justify-center ">
-            <button class="btn font-bold font-oswald text-violet-950 w-[25rem] rounded-2xl two">
-              discover what we do
+          <div className=" leading-8 flex mt-4 justify-center ">
+            <button className="btn mt-8 h-[121px] w-[121px] relative inline-flex items-center justify-start overflow-hidden transition-all bg-aquamarine rounded-[120px] hover:rounded-[120px] hover:bg-inherit group">
+              {/* purple box */}
+              <span className="w-0 h-0 rounded-[120px] bg-purple-600 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+              <span className="w-full lowercase text-2xl text-white rounded-[120px] font-oswald transition-colors duration-500 ease-in-out group-hover:text-white z-10">
+                discover more
+              </span>
             </button>
           </div>
         </div>
@@ -118,9 +119,24 @@ function Home() {
           src="https://static.vecteezy.com/system/resources/thumbnails/005/076/592/small/hacker-mascot-for-sports-and-esports-logo-free-vector.jpg"
           className=" col-start-1 row-start-1 rounded-2xl"
         />
-       </div>
-      <Carousel/>
-      
+      </div>
+
+      <Carousel />
+      <Herotext />
+      <div className="flex justify-center" >
+        <p className="text-white font-bold text-[90px] font-oswald" >
+          wanna work ?
+        </p>
+      </div>
+      <Timeline/>
+      <div className="flex justify-center" >
+        <p className="text-white font-bold text-[90px] font-oswald" >
+          Our lead associates
+        </p>
+      </div>
+      <div className="flex h-full justify-center my-4" >
+      <Avatarslide/>
+      </div>
       
     </div>
   );

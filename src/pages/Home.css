@@ -1,7 +1,4 @@
-body {
-    background-color: black;
-  }
-  
+
   @keyframes rotate {
     from {
       rotate: 0deg;
@@ -26,8 +23,8 @@ body {
     translate: -50% -50%;
     border-radius: 50%;
     background: linear-gradient(to right, aquamarine, mediumpurple);
-    animation: rotate 20s infinite;
-    opacity: 0.8;
+    animation: smoke 20s infinite, ;
+    /* opacity: 0.8 */
   }
   
 
@@ -35,58 +32,7 @@ body {
   
   /* -- Links -- */
   
-  #links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
-    padding: 1rem;
-  }
   
-  .meta-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .meta-link > :is(span, a) {
-    font-family: "Rubik", sans-serif;
-    color: white;
-  }
-  
-  .meta-link > .label {
-    width: 100px; 
-    text-align: right;
-  }
-  
-  .meta-link > a {
-    text-decoration: none;
-    outline: none;
-  }
-  
-  .meta-link > a.source {
-    color: rgb(94, 106, 210);
-  }
-  
-  .meta-link > a:is(:hover, :focus) > i {
-    color: white;  
-  }
-  
-  .meta-link > a.youtube {
-    color: rgb(239, 83, 80);
-  }
-  
-  .meta-link > a.youtube > i {
-    padding-top: 0.2rem; 
-  }
-  
-  .meta-link > a > i {
-    height: 1rem;
-    line-height: 1rem;
-  }
   
   #container {
     /* This will come into play later */
@@ -138,7 +84,7 @@ body {
 .btn::after{
   content: '';
   background: #0ebac5;
-  border-radius: 1rem;
+  border-radius: 2rem;
   width: 0;
   height: 100%;
   position: absolute;
@@ -161,3 +107,4 @@ visibility: hidden;
     visibility: visible;
     transform: translateX(0);
 }
+
