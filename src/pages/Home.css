@@ -26,7 +26,29 @@
     animation: smoke 20s infinite, ;
     /* opacity: 0.8 */
   }
-  
+  #blob2 {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 50s infinite, ;
+    /* opacity: 0.8 */
+  }
+
+  #bottom-nav {
+    /* background: linear-gradient(to right, aquamarine, mediumpurple); */
+    animation: smoke 20s infinite, ;
+    /* opacity: 0.8 */
+  }
+  .whatsapp-ico{
+    fill: white;
+    z-index: 10;
+}
 
 
   
@@ -38,18 +60,13 @@
     /* This will come into play later */
     perspective: 10px;
     width:100%;
-    min-height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     
   }
   
-  #inner {
-    width: 20em;
-    height: 18em;
-    background-color: white;
-  }
+
 
   *, *::after, ::before {
     box-sizing: border-box;

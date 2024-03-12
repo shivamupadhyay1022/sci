@@ -6,6 +6,15 @@ import Test from "./pages/Test";
 
 
 const App = () => {
+  window.ontouchstart = (event) =>{
+    return
+  }
+  window.ontouchend = (event) =>{
+    return
+  }
+  window.ontouchcancel = (event) =>{
+    return
+  }
   window.onpointermove = (event) => {
     const { clientX, clientY } = event;
     const blob = document.getElementById("blob");

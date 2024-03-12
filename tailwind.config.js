@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'shivam': "url('https://solaristech.in/images/shivam.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      }
+    },
     fontFamily: {
       'sans': ['ui-sans-serif', 'system-ui'],
       'serif': ['ui-serif', 'Georgia', ],

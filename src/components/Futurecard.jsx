@@ -38,9 +38,9 @@ const Futurecard = ({img, name,pos,link})=> {
 
 
   return (
-    <div className="bg-blue-300 rounded-3xl" >
+    <div className="bg-blue-300 rounded-3xl screen-upper flex " >
       <div class="screen text-white flex justify-center h-96 items-center">
-        <div class="screen-image">
+        <div class="screen-image" data-value = {img}>
           <img src={img} />
         </div>
         <div class="screen-overlay"></div>

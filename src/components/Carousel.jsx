@@ -7,6 +7,7 @@ import "swiper/css/autoplay";
 // Import Swiper styles
 import { Autoplay } from "swiper";
 import { EffectCards } from 'swiper';
+import Futurecard from './Futurecard';
 
 const Carousel = () => {
   
@@ -19,15 +20,19 @@ const Carousel = () => {
         className="mySwiper "
       >
         <div className='text-black' >
-        <SwiperSlide className='text-black'  >Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <Futurecard img="https://solaristech.in/images/shivam.jpg" name="Shivam" pos="Full Stack Developer" className='bg-white' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Futurecard img="https://solaristech.in/images/ritik_image.jpg" name="Rtik Kumar" pos="Data Scientist" className='bg-white' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Futurecard img="https://solaristech.in/images/abbhishek.jpg" name="Abhishek Kumar" pos="Full Stack Developer" className='bg-white' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Futurecard img="https://solaristech.in/images/WhatsAppImage2023-02-01at12.09.04.jpg" name="Harsh Raj" pos="Graphic Designer" className='bg-white' />
+        </SwiperSlide>
+
       </div>
         
       </Swiper>

@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import {epac, forum, periodic_table, qeds} from '../assets/index'
+import SwiperCore,{Autoplay} from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,13 +14,22 @@ import './Avatarslide.css';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper';
 import Futurecard from './Futurecard';
+import { joharnite } from '../assets';
 function Avatarslide() {
-    
+  SwiperCore.use([Autoplay])
+
+    // useEffect = {
+    // }
   return (
-    <div className=" relative overflow-x-hidden y-32 flex w-full">
+    <div className=" relative overflow-x-hidden y-32 md:h-[500px] flex w-full  ">
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
+        autoplay= {{
+          delay: 3500,
+          pauseOnMouseEnter: true
+        }}
+        speed={200}
         centeredSlides={true}
         slidesPerView={'auto'}
         coverflowEffect={{
@@ -32,22 +43,22 @@ function Avatarslide() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper swiper2 swiper-slide2"
       >
-        <SwiperSlide className='' >
-            <Futurecard img="https://solaristech.in/images/shivam.jpg" name="Shivam" pos="Full Stack Developer" className='bg-white' />
+        <SwiperSlide className='  w-[350px] md:w-[800px] h-full self-center' >
+            <img src={joharnite} className=''/>
         </SwiperSlide>
-        <SwiperSlide  >
-        <Futurecard img = "https://solaristech.in/images/ritik_image.jpg" name="Ritik Kumar" pos="Data Scientist"/>
+        <SwiperSlide className='w-[350px] md:w-[800px] h-full self-center' >
+            <img src={forum} className=''/>
         </SwiperSlide>
-        <SwiperSlide>
-        <Futurecard/>
+        <SwiperSlide className=' w-[300px] md:w-[800px] h-full self-center' >
+            <img src={epac} className=''/>
         </SwiperSlide>
-        <SwiperSlide>
-        <Futurecard/>
+        <SwiperSlide className=' w-[350px] md:w-[800px] h-full self-center' >
+            <img src={qeds} className=''/>
         </SwiperSlide>
-        <SwiperSlide>
-        <Futurecard/>
+        <SwiperSlide className=' w-[350px] md:w-[800px] h-full self-center' >
+            <img src={periodic_table} className=''/>
         </SwiperSlide>
-        
+       
       </Swiper>
  </div>
   )
