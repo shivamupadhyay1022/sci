@@ -66,7 +66,39 @@
     
   }
   
-
+/*---Modal---*/
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  border-radius: 18px;
+}
 
   *, *::after, ::before {
     box-sizing: border-box;
@@ -82,25 +114,21 @@
 
 .btn {
   
-  background-color: #0ebac5;
   border: none;
   user-select: none;
   cursor: pointer;
   font-size: 20px;
   text-transform: uppercase;
   transition: all 0.5s linear;
-  color: #fff;
 }
 
 .btn:hover {
-  background-color:#1e183a;
   border-radius: 1rem;
   scale: 1.1;
 }
 
 .btn::after{
   content: '';
-  background: #0ebac5;
   border-radius: 2rem;
   width: 0;
   height: 100%;

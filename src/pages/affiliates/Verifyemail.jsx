@@ -12,7 +12,7 @@ function Verifyemail() {
         await sendEmailVerification(currentUser)
         .then(() => {
             //registered
-            toast.success(currentUser.email + "Mail Sent", {
+            toast.success(currentUser.email+" " + "Mail Sent", {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,

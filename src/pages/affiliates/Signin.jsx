@@ -70,7 +70,6 @@ function Signin() {
     }
 
     const showpassword = () => {
-        console.log("show")
         var x = document.getElementById("password");
         if (x.type === "password") {
           x.type = "text";
@@ -173,7 +172,7 @@ function Signin() {
                 type="submit"
                 onClick={handleSubmit}
               >
-                Register
+                Login
               </button>
             </div>
             <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">

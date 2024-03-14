@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { auth, db } from "../../firebase";
-import { ref, set, onValue } from "firebase/database";
+import { ref, set, onValue, update } from "firebase/database";
 import { signOut } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../components/AuthProvider";
@@ -13,9 +13,11 @@ import {
   SiAmazonpay,
   SiPaypal,
   SiWhatsapp,
-  SiDiscord
+  SiDiscord,
 } from "react-icons/si";
+import Popup from "reactjs-popup";
 import { cyan_logo } from "../../assets";
+
 
 function Dashboard() {
   const { currentUser } = useContext(AuthContext);
@@ -84,15 +86,50 @@ function Dashboard() {
     }
   };
 
+  const updateupi = () =>{
+    // console.log(currentUser.uid)
+    update(ref(db, "freelancers/" + currentUser.uid), {
+      upi: upi,
+    }).then ( () => {
+      toast.success(user.acode +" " + "Upi Updated", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }).catch((error) =>{
+      const errorCode = error.code;
+        // const errorMessage = error.message;
+        // console.log(errorMessage);
+        toast.error(errorCode, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+    });
+    
+  };
+
   return (
     <div className="w-full flex-col ">
       <ToastContainer />
       <center className=" mb-8 ">
         <img src={cyan_logo} className=" h-64 mb-4   " alt="" />
       </center>
+      {/* first row  */}
       <div className="grid m-4 gap-2 md:grid-cols-2 md:m-12  md:gap-16">
+        {/* first block  */}
         <div className=" text-white font-oswald pt-4 pb-4 w-full bg-gray-700 rounded-xl">
-          <table className=" mx-4 overflow-hidden w-full table-auto border-spacing-y-4  ">
+          <table className=" mx-auto overflow-hidden w-[93%] table-auto  ">
             <tbody>
               <tr className="mb-2">
                 <td>Developer's Name</td>
@@ -124,11 +161,17 @@ function Dashboard() {
               </tr>
             </tbody>
           </table>
-          {/* <button  >
-            Update
-          </button> */}
+          <center>
+            <button
+              className="mt-4 w-3/4 bg-gradient-to-r from-[#b2e9d7] to-[#9363f1] px-4 py-2 text-white uppercase rounded-2xl text-xs tracking-widerjustify-self-center items-center"
+              onClick={handlelogout}
+            >
+              Logout
+            </button>
+          </center>
         </div>
-        <div className=" text-white flex-row font-oswald pt-4 pb-4 w-full bg-gray-700 rounded-xl">
+        {/* second block  */}
+        <div className=" text-white  flex-row justify-between font-oswald pt-4 pb-4 w-full bg-gray-700 rounded-xl">
           <div className="flex justify-center w-full flex-row gap-2">
             <SiPaypal />
             <SiAmazonpay /> <SiGooglepay /> <SiRazorpay /> <SiPaytm />{" "}
@@ -144,7 +187,8 @@ function Dashboard() {
                     <input
                       placeholder={upi || "UPI"}
                       className="bg-slate-500 text-center w-[80%] border-black border-1 text-white rounded-xl"
-                      onChange={(e) => setUpi(e.target.value)}
+                      onChange={(e) => {console.log(upi)
+                        setUpi(e.target.value)}}
                     />
                   </td>
                 </tr>
@@ -153,36 +197,50 @@ function Dashboard() {
           </div>
 
           <center>
-            <button className="mt-4 w-3/4 bg-gradient-to-r from-[#b2e9d7] to-[#9363f1] px-4 py-2 text-white uppercase rounded-2xl text-xs tracking-widerjustify-self-center items-center">
+            <button 
+            className="mt-4 w-3/4 bg-gradient-to-r from-[#b2e9d7] to-[#9363f1] px-4 py-2 text-white uppercase rounded-2xl text-xs tracking-widerjustify-self-center items-center"
+            onClick={updateupi}>
               Update
             </button>
           </center>
         </div>
       </div>
 
-      {/* Second rows */}
+      {/* Second row */}
       <div className="grid m-4 gap-2 md:grid-cols-2 md:m-12  md:gap-16">
-          {/* first block */}
-        <center className=" text-white font-oswald pt-4 pb-4 w-full bg-gray-700 rounded-xl">
+        {/* first block */}
+        <div className="pt-4 pb-4 w-full flex justify-center bg-gray-700 rounded-xl" >
+        <center className=" text-white font-oswald ">
           <span>Develeoper's Tier:</span>
           <br />
           <p className="text-8xl ">{renderSwitch(tier)}</p>
           <p className="text-4xl ">{'"' + tier + '"'}</p>
         </center>
+        <span className="mx-4  border-[#bd9cff] pl-4 border-l-4" >⭐<br/>🌟<br/>✨<br/>🌠<br/>💫<br/>⚜️<br/>👑</span>
+
+        </div>
+        
         {/* Second block */}
         <div className=" flex flex-col text-center text-white font-bold font-oswald p-4 w-full bg-gray-700 rounded-xl">
-          <span className="mb-8" >
+          <span className="mb-8">
             Join Social Media Groups to get Regular updates
           </span>
-        <div className=" text-white justify-center items-center flex flex-row font-oswald">
-
-        <SiWhatsapp />
-        <SiDiscord />
-
-
-        </div>
+          <div className=" text-white justify-center items-center flex flex-row font-oswald">
+            <a href="https://chat.whatsapp.com/CH5N5s3SOC6BU9gOyfJk5a" >
+            <SiWhatsapp className="text-4xl mx-4" />
+            </a>
+            <button>
+              <SiDiscord className="text-4xl mx-4" />
+            </button>
+          </div>
         </div>
       </div>
+      {/* third rows */}
+      {jobdesc ? <center className="pt-4 m-4 md:m-12 pb-4  justify-center bg-gray-700 rounded-xl">
+          <span className="text-white font-bold font-oswald" >Current Job Desc</span>
+          <p className="text-white font-oswald" >{jobdesc || "none"}</p>
+      </center> : "" }
+      
     </div>
   );
 }
